@@ -27,7 +27,7 @@
 '''
 
 def proverka_chas(n):
-
+    #добавление правильного падежного окончания для слова час
     r = ''
     c = 'час'
     if int(n) == 1 or int(n) == 21:
@@ -40,7 +40,7 @@ def proverka_chas(n):
 
 
 def proverka_minut(b):
-    
+    #добавление правильного падежного окончания для слова минута
     rmin = ''
     m = 'минут'
     if int(b) % 10 == 1 and int(b) % 100 != 11:
@@ -52,28 +52,34 @@ def proverka_minut(b):
     return rmin
     
 def main():
-
+    #ввод данных
     user_input = input('Введите два числа через пробел, первое число - часы, второе - минуты: ').split()
 
-    if len(user_input) != 2:
+    #проверка правильности ввода
+    if len(user_input) != 2 or not user_input[0].isdigit() or not user_input[1].isdigit() :
         print("Ошибка: необходимо ввести два числа через пробел.")
         return
     
-    flag = True
+    flag = True #установлен флаг для провери ввода
 
+    #проверка правильности ввода
     if not 0 <= int(user_input[0]) <= 23:
         print('Введены недопустимые данные: часы должны быть от 0 до 23')
         flag = False
-    elif not 0 <= int(user_input[1]) <= 59 :
+    elif not 0 <= int(user_input[1]) <= 59:
         print('Введены недопустимые данные: минуты должны быть от 0 до 59')
         flag = False
 
     if not flag:
-        return
+        return #если флаг изменился, программа завершается
     
     chas = int(user_input[0])
     minuta = int(user_input[1])
-    dobavka = ''
+
+    dobavka = '' #доп строка
+
+
+    #доп слово/слова добавляются в доп строку
     if 0 <= chas < 6:
         dobavka += 'ночи'
     elif 6 <= chas < 12:
@@ -85,8 +91,11 @@ def main():
     if minuta == 0:
         dobavka +=  ' ровно'
 
+    #перевод в 12 часовой формат
     if chas > 12:
         chas = chas - 12
+        
+    #вывод данных
     if chas == 0 and minuta == 0:
         print('Полночь')
         return
