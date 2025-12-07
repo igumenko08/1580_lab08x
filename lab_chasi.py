@@ -23,8 +23,8 @@
 
 def proverka_chas(n):
     #эта функция узнает падежное окончание для слова час
-    result = ''
-    slovo = 'час'
+    result = '' #результат
+    slovo = 'час' #начальное слово
     if int(n) == 1 or int(n) == 21:
         result = slovo
     elif 1 < int(n)%10 < 5 and int(n)//10 != 1:
@@ -36,14 +36,14 @@ def proverka_chas(n):
 
 def proverka_minut(b):
     #эта функция узнает падежное окончание для слова минута
-    result_minut = ''
-    slovo = 'минут'
+    result_minut = '' #результат
+    slovo_minuta = 'минут' #начальное слово
     if int(b) % 10 == 1 and int(b) % 100 != 11:
-        result_minut = slovo + 'а'
+        result_minut = slovo_minuta + 'а'
     elif int(b) % 10 in (2, 3, 4) and int(b) % 100 not in (12, 13, 14):
-        result_minut = slovo + 'ы'
+        result_minut = slovo_minuta + 'ы'
     else:
-        result_minut = slovo
+        result_minut = slovo_minuta
     return result_minut
     
 
